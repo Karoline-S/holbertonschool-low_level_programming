@@ -10,9 +10,7 @@ int main(void)
 
 {
 
-  char str[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
-
-  fwrite(str, 0,sizeof(str), stderr);
+  fprintf(stderr, "and that piece of art is useful\" - Dora Korpar, 2015-10-10\n");
 
   return (1);
 
