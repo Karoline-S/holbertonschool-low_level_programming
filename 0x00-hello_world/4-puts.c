@@ -1,12 +1,17 @@
 #include <stdio.h>
 
+/**
+ * main - the starting point, I think
+ *
+ * Return: This is where i describe what the return does
+ */
 int main(void)
 {
   /* initialising strings */
-char str1[] = "Programming is like building a multilingual puzzle"
+char str[] = "Programming is like building a multilingual puzzle";
 
   /*writing to stdout */
-puts(str1);
+puts(str);
 
 return (0);
 }
