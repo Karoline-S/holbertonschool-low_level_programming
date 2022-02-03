@@ -7,9 +7,9 @@
  */
 int main(void)
 {
-printf("%lu\n", sizeof(char));
-printf("%lu\n", sizeof(int));
-printf("%lu\n", sizeof(long int));
-printf("%lu\n", sizeof(long long int));
+printf("Size of a char: \"%lu\n\" byte(s)", sizeof(char));
+printf("Size of a char: \"%lu\n\" byte(s)", sizeof(int));
+printf("Size of a char: \"%lu\n\" byte(s)", sizeof(long int));
+printf("Size of a char: \"%lu\n\" byte(s)", sizeof(long long int));
 return (0);
 }
