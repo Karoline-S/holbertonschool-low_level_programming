@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-#define NC "/e[0m"
-
 /**
  * main - the starting point, I think
  *
@@ -9,9 +7,13 @@
  */
 
 int main(void)
+
 {
 
-  fwrite("and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", 62, 1, stderr);
-  exit(EXIT_FAILURE);
+char str[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n";
+
+fwrite(str, 1, sizeof(str), stderr);
+
+return (0);
 
 }
