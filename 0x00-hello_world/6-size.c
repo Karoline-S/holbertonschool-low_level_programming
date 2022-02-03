@@ -7,9 +7,15 @@
  */
 int main(void)
 {
-printf("Size of a char: \"%lu\n\" byte(s)", sizeof(char));
-printf("Size of a char: \"%lu\n\" byte(s)", sizeof(int));
-printf("Size of a char: \"%lu\n\" byte(s)", sizeof(long int));
-printf("Size of a char: \"%lu\n\" byte(s)", sizeof(long long int));
+char charType;
+int intType;
+long int longintType;
+long long int longlongintType;
+
+  /* sizeof evaluates the size of a variable */
+printf("Size of char: %zu byte(s)\n", sizeof(charType));
+printf("Size of int: %zu byte(s)\n", sizeof(intType));
+printf("Size of long int: %zu byte(s)\n", sizeof(longintType));
+printf("Size of long long int: %zu byte(s)\n", sizeof(longlongintType));
 return (0);
 }
