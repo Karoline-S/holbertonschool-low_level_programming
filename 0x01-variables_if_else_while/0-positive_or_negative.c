@@ -2,8 +2,8 @@
 #include <time.h>
 #include <stdio.h>
 
-/*
- * Main: description of main here
+/**
+ * Main - description of main here
  *
  * Return: returns result of if else function
  */
