@@ -4,7 +4,12 @@
 
 /**
  * Main - description of main here
- *
+ * 
+ * Description: if variable is greater than zero
+ * print positive
+ * if else variable is equal to zero print zero
+ * else print negative
+ * 
  * Return: what happens on return here
  */
 int main(void)
