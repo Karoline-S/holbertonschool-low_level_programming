@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 /**
- * Main - description of main here
+ * main - Defines main can only be called without any parameters
  *
  * Description: if variable is greater than zero
  * print positive
