@@ -13,11 +13,21 @@
 
 int main(void)
 {
-	char x;
+	int i;
 
-	for (x = 'a'; x <= 'z'; x++)
-	if (x != 'q' && x != 'e')
-	putchar(x);
-putchar('\n');
-return (0);
+	i = '0';
+	while (i <= '9')
+	{
+		putchar(i);
+		i = i + 1;
+	}
+
+	i = 'a';
+	while (i <= 'f')
+	{
+		putchar(i);
+		i = i + 1;
+	}
+	putchar('\n');
+	return (0);
 }
