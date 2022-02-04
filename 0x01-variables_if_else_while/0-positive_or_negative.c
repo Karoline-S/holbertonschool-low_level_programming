@@ -5,9 +5,8 @@
 /**
  * Main - description of main here
  *
- * Return: returns result of if else function
+ * Return: what happens on return here
  */
-
 int main(void)
 {
 	int n;
