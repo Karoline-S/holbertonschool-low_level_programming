@@ -17,8 +17,12 @@ int main(void)
 	{
 		putchar(i);
 		i = i + 1;
+		
+		if (i < '9')
+		{
 		putchar(',');
 		putchar(' ');
+		}
 	}
 	putchar('\n');
 	return (0);
