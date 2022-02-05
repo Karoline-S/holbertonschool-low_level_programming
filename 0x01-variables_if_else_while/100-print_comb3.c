@@ -20,9 +20,9 @@ int main(void)
 		while (a2 <= '9')
 		{
 			putchar(a1);
-                        putchar(a2);
+			putchar(a2);
 
-			if(a1 < '8')
+			if (a1 < '8')
 			{
 				putchar(',');
 				putchar(' ');
