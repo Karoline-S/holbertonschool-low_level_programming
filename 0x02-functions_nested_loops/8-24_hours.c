@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * print_last_digit - short description here
+ * jack_bauer - short description here
  *
  * Description: long description here
  *
