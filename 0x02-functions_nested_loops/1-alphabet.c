@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * main - short description here
+ * print_alphabet - short description here
  *
  * Description: long description here
  *
