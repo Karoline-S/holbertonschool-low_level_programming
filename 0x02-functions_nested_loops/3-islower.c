@@ -13,13 +13,15 @@
 
 int _islower(int c)
 {
+	int i;
+
 	if (c > 96 && c < 123)
 	{
-		_putchar('1');
+		i = 1;
 	}
 	else
 	{
-		_putchar('0');
+		i = 0;
 	}
-	return (0);
+	return (i);
 }
