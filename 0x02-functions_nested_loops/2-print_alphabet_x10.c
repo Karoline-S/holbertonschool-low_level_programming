@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * print_alphabet - short description here
+ * print_alphabetfunction print_alphabet_x10 - short description here
  *
  * Description: long description here
  *
@@ -13,7 +13,7 @@ void print_alphabet_x10(void)
 {
 	int a = 0;
 
-	while (a <= 10)
+	while (a <= 9)
 	{
 		char c = 'a';
 
