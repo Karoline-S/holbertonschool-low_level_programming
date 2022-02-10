@@ -12,7 +12,7 @@ void print_triangle(int size)
 	int hash;
 	int count = 1;
 
-	while (count <= size)
+	while (count <= size && size > 0)
 	{
 		space = (size - count);
 		hash = (size - space);
@@ -30,4 +30,6 @@ void print_triangle(int size)
 		_putchar('\n');
 		count = count + 1;
 	}
+	if (size == 0)
+		_putchar('\n');
 }
