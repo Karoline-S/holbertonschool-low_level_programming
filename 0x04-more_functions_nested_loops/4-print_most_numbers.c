@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * print_most_numbers - prints char to stoutput
@@ -14,7 +13,7 @@ void print_most_numbers(void)
 	{
 		if (!(c == '2') && !(c == '4'))
 		{
-		       _putchar(c);
+			_putchar(c);
 		}
 		c++;
 	}
