@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - prints the timestable of n.
+ * main - prints all combinations of two two digit numbers to 99
  *
  * Return: 1 on success;
  */
@@ -9,41 +9,29 @@ int main(void)
 {
 	int a = 0;
 	int b;
-	int c;
-	int d;
 
-	while (a <= 9)
+	while (a <= 99)
 	{
 		b = 0;
 
-		while (b <= 9)
+		while (b <= 99)
 		{
-			c = a;
-
-			while (c <= 9)
+			if (a < b)
 			{
-				d = b + 1;
-
-				while (d <= 9)
+				putchar((a / 10) + '0');
+				putchar((a % 10) + '0');
+				putchar(' ');
+				putchar((b / 10) + '0');
+				putchar((b % 10) + '0');
+				if (a != 98)
 				{
-					putchar(a + '0');
-					putchar(b + '0');
+					putchar(',');
 					putchar(' ');
-					putchar(c + '0');
-					putchar(d + '0');
-
-					if (!(a == 9 && b == 8))
-					{
-						putchar(',');
-						putchar(' ');
-					}
-					d++;
 				}
-				c++;
 			}
-			b++;
+			b = b + 1;
 		}
-		a++;
+		a = a + 1;
 	}
 	putchar('\n');
 	return (0);
