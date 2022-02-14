@@ -7,7 +7,7 @@
  */
 int _strlen(char *s)
 {
-	int count = 1;
+	int count = 0;
 
 	while (*s != '\0')
 	{
@@ -29,7 +29,7 @@ void print_rev(char *s)
 	int element;
 
 	len = _strlen(s);
-	element = len;
+	element = len - 1;
 	while (len >= 0)
 	{
 		_putchar(s[element]);
