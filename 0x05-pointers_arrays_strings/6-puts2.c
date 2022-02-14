@@ -29,7 +29,7 @@ void puts2(char *str)
 	int strSize;
 
 	strSize = (_strlen(str) - 1) / 2;
-	elementPos = 1;
+	elementPos = 0;
 
 	while (strSize > 0)
 	{
