@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _strlen - find the length of a string
@@ -24,19 +25,22 @@ int _strlen(char *s)
  */
 void rev_string(char *s)
 {
-	int length;
+	int midPoint;
 	int elementStart;
 	int elementEnd;
+	char hold;
 
-	length = _strlen(s);
+	midPoint = _strlen(s) / 2;;
 	elementStart = 0;
-	elementEnd = length;
+	elementEnd = _strlen(s) - 1;
 
-	while (length >= 0)
+	while (midPoint >= 0)
 	{
+		hold = s[elementStart];
 		s[elementStart] = s[elementEnd];
+		s[elementEnd] = hold;
 		elementStart++;
 		elementEnd--;
-		length--;
+		midPoint--;
 	}
 }
