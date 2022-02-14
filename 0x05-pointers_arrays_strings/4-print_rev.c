@@ -28,13 +28,13 @@ void print_rev(char *s)
 	int length;
 	int element;
 
-	length = _strlen(s);
-	element = length - 2;
+	length = _strlen(s) - 1;
+	element = length;
 	while (length >= 0)
 	{
 		_putchar(s[element]);
 		element--;
 		length--;
-	}
+       	}
 	_putchar('\n');
 }
