@@ -25,4 +25,8 @@ void print_array(int *a, int n)
 			arrayStart++;
 		}
 	}
+	if (!(arrayStart == n))
+	{
+		printf("\n");
+	}
 }
