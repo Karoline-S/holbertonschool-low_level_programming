@@ -30,11 +30,11 @@ void rev_string(char *s)
 	int elementEnd;
 	char hold;
 
-	midPoint = _strlen(s) / 2;;
+	midPoint = _strlen(s) / 2;
 	elementStart = 0;
 	elementEnd = _strlen(s) - 1;
 
-	while (midPoint >= 0)
+	while (midPoint > 0)
 	{
 		hold = s[elementStart];
 		s[elementStart] = s[elementEnd];
