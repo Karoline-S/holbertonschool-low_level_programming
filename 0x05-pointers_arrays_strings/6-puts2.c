@@ -31,7 +31,7 @@ void puts2(char *str)
 	strSize = (_strlen(str) - 1) / 2;
 	elementPos = 0;
 
-	while (strSize > 0)
+	while (strSize >= 0)
 	{
 		_putchar(str[elementPos]);
 		elementPos = elementPos + 2;
