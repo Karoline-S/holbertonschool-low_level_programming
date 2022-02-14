@@ -35,6 +35,6 @@ void print_rev(char *s)
 		_putchar(s[element]);
 		element--;
 		length--;
-       	}
+	}
 	_putchar('\n');
 }
