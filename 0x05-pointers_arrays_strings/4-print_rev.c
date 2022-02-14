@@ -30,7 +30,7 @@ void print_rev(char *s)
 
 	len = _strlen(s);
 	element = len;
-	while (len > 0)
+	while (len >= 0)
 	{
 		_putchar(s[element]);
 		element--;
