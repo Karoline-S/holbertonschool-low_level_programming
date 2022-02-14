@@ -29,11 +29,11 @@ void puts_half(char *str)
 	int strHalfSize;
 
 	strlength = (_strlen(str));
-	strHalfSize = (strlength - 1) / 2;
+	strHalfSize = strlength / 2;
 
 	if (strlength % 2 == 0)
 	{
-		while (strHalfSize < (strlength - 1) && *str != '\0')
+		while (strHalfSize < strlength  && *str != '\0')
 		{
 			_putchar(str[strHalfSize]);
 			strHalfSize++;
@@ -41,7 +41,8 @@ void puts_half(char *str)
 	}
 	else
 	{
-		while (strHalfSize < (strlength - 1) && *str != '\0')
+		strHalfSize = (strlength - 1) / 2;
+		while (strHalfSize < strlength - 1 && *str != '\0')
 		{
 			_putchar(str[strHalfSize]);
 			strHalfSize++;
