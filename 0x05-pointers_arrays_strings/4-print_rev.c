@@ -25,16 +25,16 @@ int _strlen(char *s)
  */
 void print_rev(char *s)
 {
-	int len;
+	int length;
 	int element;
 
-	len = _strlen(s);
-	element = len - 1;
-	while (len >= 0)
+	length = _strlen(s);
+	element = length - 2;
+	while (length >= 0)
 	{
 		_putchar(s[element]);
 		element--;
-		len--;
+		length--;
 	}
 	_putchar('\n');
 }
