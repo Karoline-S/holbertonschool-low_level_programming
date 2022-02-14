@@ -28,7 +28,7 @@ void _puts(char *str)
 	int element = 0;
 
 	len = _strlen(str);
-	while (len >= 0)
+	while (len > 0)
 	{
 		_putchar(str[element]);
 		element++;
