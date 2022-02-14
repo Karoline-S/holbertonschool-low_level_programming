@@ -41,13 +41,12 @@ void puts_half(char *str)
 	}
 	else
 	{
-		strHalfSize = (strlength - 1) / 2;
-		while (strHalfSize < strlength - 1 && *str != '\0')
+		strHalfSize = strlength - (strlength / 2);
+		while (strHalfSize < strlength && *str != '\0')
 		{
 			_putchar(str[strHalfSize]);
 			strHalfSize++;
 		}
 	}
-	_putchar('\n');
 	_putchar('\n');
 }
