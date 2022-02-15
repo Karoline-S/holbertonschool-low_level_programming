@@ -5,7 +5,7 @@
  * @c: automatic variable
  * Return: Always 1 if digit, 0 otherwise.
  */
- int _isdigit(char c)
+int _isdigit(char c)
 {
 	if (c >= '0' && c <= '9')
 		c = 1;
@@ -17,17 +17,23 @@
 /**
  * _isPosOrNeg - check if char is '-' or '+' and if yes, return a char
  * reflecting which symbol it is
- * @c: the char to be checked
+ * @s: the string to be checked
  * Return: char a
  */
-char _isPosOrNeg(char c)
+char _isPosOrNeg(char *s)
 {
+	int count = 0;
+	int neg = 0;
 	char a;
 
-	if (c == '-')
+	while ((s[count] != '\0'))
+	{
+		if (s[count] == '-')
+			neg++;
+		count++;
+	}
+	if (neg % 2 != 0)
 		a = '-';
-	if (c == '+')
-		a = '+';
 	return (a);
 }
 
@@ -48,7 +54,7 @@ int _atoi(char *s)
 
 	while (s[count] != '\0')
 	{
-		posOrNeg = _isPosOrNeg(s[count]);
+/*		posOrNeg = _isPosOrNeg(s[count]); */
 		intFind = _isdigit(s[count]);
 		if (intFind == 1)
 			break;
@@ -65,6 +71,7 @@ int _atoi(char *s)
 		tempInt = strInt;
 		count++;
 	}
+	posOrNeg = _isPosOrNeg(s);
 	if (posOrNeg == '-')
 	{
 		strInt = strInt * -1;
