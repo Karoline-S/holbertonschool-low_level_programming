@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * _strlen - find the length of a string
@@ -35,8 +34,6 @@ char *_strncat(char *dest, char *src, int n)
 
 	while (*(src + count) != '\0' && count < n)
 	{
-		printf("count = %d\n*src + count %d\n", count, src[count]);
-		printf("destlen = %d\n", destlen);
 		dest[destlen + count] = src[count];
 		count++;
 	}
