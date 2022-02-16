@@ -32,10 +32,9 @@ char *_strcat(char *dest, char *src)
 
 	while (*(src + count) != '\0')
 	{
-		dest[destlen] = src[count];
-		destlen++;
+		dest[destlen + count] = src[count];
 		count++;
 	}
-	dest[destlen] = '\0';
+	dest[destlen + count] = '\0';
 	return (dest);
 }
