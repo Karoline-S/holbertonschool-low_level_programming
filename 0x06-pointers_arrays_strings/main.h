@@ -13,5 +13,6 @@ char *leet(char *);
 int _strlen(char *s);
 int match_find(char *s1, char *s2);
 int _islower(int c);
+int _isNewWord(int a);
 
 #endif /* MAIN_H */
