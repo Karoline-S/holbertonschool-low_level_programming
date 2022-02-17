@@ -14,5 +14,6 @@ int _strlen(char *s);
 int match_find(char *s1, char *s2);
 int _islower(int c);
 int _isNewWord(int a);
+char *rot13(char *s);
 
 #endif /* MAIN_H */
