@@ -1,45 +1,21 @@
 #include "main.h"
 
 /**
- * _ischar - checking for char a, A, e, E, o, O, t, T, l, L
- *@a: the ascii value char to be checked
- * Return: Always 1 if uppercase found or 0 if not.
- */
-int _ischar(int a)
-{
-	if (a == 97 || a == 65 || a == 101 || a == 69 || a == 111 || a == 79)
-		return (1);
-	else if (a == 116 || a == 84 || a == 108 || a == 76)
-		return (1);
-	return (0);
-}
-
-/**
  * _codeSwap - swaps the char by providing a new ascii value
  *@a: ascii value int to be swapped
  * Return: nothing
  */
 int _codeSwap(int a)
 {
-	if (a == 97)
+	if (a == 97 || a == 65)
 		a = 52;
-	else if (a == 65)
-		a = 52;
-	else if (a == 101)
+	else if (a == 101 || a == 69)
 		a = 51;
-	else if (a == 69)
-		a = 51;
-	else if (a == 111)
+	else if (a == 111 || a == 79)
 		a = 48;
-	else if (a == 79)
-		a = 48;
-	else if (a == 116)
+	else if (a == 116 || a == 84)
 		a = 55;
-	else if (a == 84)
-		a = 55;
-	else if (a == 108)
-		a = 49;
-	else if (a == 76)
+	else if (a == 108 || a == 76)
 		a = 49;
 	return (a);
 }
@@ -53,17 +29,10 @@ int _codeSwap(int a)
 char *leet(char *str)
 {
 	int count = 0;
-	int charFound;
 
 	while (str[count] != '\0')
 	{
-		charFound = 0;
-		charFound = _ischar(*(str + count));
-		while (charFound == 1)
-		{
-			str[count] = _codeSwap(*(str + count));
-			break;
-		}
+		str[count] = _codeSwap(str[count]);
 		count++;
 	}
 	return (str);
