@@ -29,6 +29,8 @@ int _isNewWord(int a)
 		a = 1;
 	else if (a == '{' || a == '}')
 		a = 1;
+	else if (a < 0 && a > 127)
+		a = 1;
 	else
 		a = 0;
 	return (a);
