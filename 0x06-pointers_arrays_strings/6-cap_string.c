@@ -22,7 +22,6 @@ int _islower(int c)
  */
 int _isNewWord(int a)
 {
-
 	if (a == '?' || a == 9 || a == 10 || (a > 31 && a < 35))
 		a = 1;
 	else if ((a > 39 && a < 42) || a == ',' || a == '.' || a == ';')
@@ -58,5 +57,7 @@ char *cap_string(char *str)
 		}
 		count++;
 	}
+	if (str[0] >= 'a' && str[0] <= 'z')
+		str[0] = str[0] - 32;
 	return (str);
 }
