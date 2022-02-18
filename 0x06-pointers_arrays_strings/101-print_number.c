@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 int digit_len(int n)
 {
@@ -10,7 +9,6 @@ int digit_len(int n)
 		n = n / 10;
 		count++;
 	}
-	printf("This is digit len return: %d\n", count);
 	return (count);
 }
 
@@ -25,7 +23,6 @@ int myPow(int a)
 		x = x * 10;
 		a--;
 	}
-	printf("This is myPow return: %d\n", p);
 	return (p);
 }
 /**
