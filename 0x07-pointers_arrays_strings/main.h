@@ -10,6 +10,7 @@ char *_strpbrk(char *s, char *accept);
 char *_strstr(char *haystack, char *needle);
 void print_chessboard(char (*a)[8]);
 void print_diagsums(int *a, int size);
+void set_string(char **s, char *to);
 
 char *_strcat(char *dest, char *src);
 char *_strncat(char *dest, char *src, int n);
@@ -20,7 +21,7 @@ char *string_toupper(char *str);
 char *cap_string(char *);
 char *leet(char *);
 int _strlen(char *s);
-int match_find(char *s1, char *s2);
+int match_found(char *h, char *n);
 int _islower(int c);
 int _isNewWord(int a);
 char *rot13(char *s);
