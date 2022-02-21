@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stddef.h>
 
 /**
  * _strchr - returns a pointer to the first occurence of a particular char in a
@@ -22,5 +23,5 @@ char *_strchr(char *s, char c)
 		}
 		idx++;
 	}
-	return ('\0');
+	return (NULL);
 }
