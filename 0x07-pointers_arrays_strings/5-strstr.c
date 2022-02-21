@@ -36,7 +36,10 @@ char *_strstr(char *haystack, char *needle)
 		{
 			match = match_found((haystack + hold), (needle + n));
 			if (needle[n + 1] == '\0' && match == 1)
-				return (haystack + h);
+			{
+				if (*needle == haystack[h])
+					return (haystack + h);
+			}
 			n++;
 			hold++;
 		}
