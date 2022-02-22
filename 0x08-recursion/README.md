@@ -1,6 +1,8 @@
 # C Programming - Recursion #
 ## Holberton School Founcations ##
 
+REQUIREMENTS: all loops are prohibited and the  standard library is unavailable.
+
  **Mandatory Tasks**
 
 0. Write a function that prints a string followed by a new line. Reference function: puts.
