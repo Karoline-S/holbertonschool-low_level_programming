@@ -25,12 +25,10 @@ void print_diagsums(int *a, int size)
 
 	sum = *(a + size - 1);
 	count = 1;
-	printf("sum here = %d\n", sum);
 	while (count < size)
 	{
 		a = a + size - 1;
 		sum = sum + *(a + size - 1);
-		printf("sum in loop is = %d\n", sum);
 		count++;
 	}
 	printf("%d\n", sum);
