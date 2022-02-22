@@ -7,12 +7,12 @@
  */
 int main(void)
 {
-	unsigned long int fib1 = 1;
-	unsigned long int fib2 = 2;
+	unsigned long fib1 = 1;
+	unsigned long fib2 = 2;
 	unsigned long fibPlus;
 	unsigned long fibCheck = 0;
+	unsigned long sum = 2;
 
-	printf("%ld", fib2);
 	while (fibCheck < 4000000)
 	{
 		fibPlus = fib1 + fib2;
@@ -20,8 +20,8 @@ int main(void)
 		fib2 = fibPlus;
 		fibCheck = fibPlus + fib1;
 		if (fibPlus % 2 == 0)
-			printf(", %ld", fibPlus);
+			sum = sum + fibPlus;
 	}
-	printf("\n");
+	printf("%ld\n", sum);
 	return (0);
 }
