@@ -13,7 +13,7 @@ int prime_check(int y, int n)
 		return (0);
 	if ((n / y) % 10 == 0)
 		return (0);
-	return (_increment(y + 1, n));
+	return (prime_check(y + 1, n));
 }
 
 /**
