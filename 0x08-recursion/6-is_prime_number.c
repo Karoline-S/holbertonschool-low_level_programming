@@ -11,8 +11,10 @@ int prime_check(int y, int n)
 {
 	if (y >= n)
 		return (0);
-	if ((n / y) % 10 == 0)
+	if (n % y == 0)
 		return (0);
+	if (y + 1 == n)
+		return (1);
 	return (prime_check(y + 1, n));
 }
 
