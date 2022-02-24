@@ -7,13 +7,15 @@
  */
 int main(void)
 {
-	int count = 4;
+	int count = 3;
+
 	long double fib1 = 1;
 	long double fib2 = 2;
 	long double fibPlus;
 
 	printf("%.0Lf", fib1);
 	printf(", %.0Lf", fib2);
+
 	while (count < 99)
 	{
 		fibPlus = fib1 + fib2;
