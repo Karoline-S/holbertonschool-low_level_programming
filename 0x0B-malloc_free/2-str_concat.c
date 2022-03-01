@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 /**
  * _strlen - length a string
  * @s: string in questions
@@ -20,19 +21,21 @@ int _strlen(char *s)
 char *str_concat(char *s1, char *s2)
 {
 	char *new;
-	unsigned int size1, size2;
-	unsigned int idx1, idx2;
+	unsigned int size1, size2, idx1, idx2;
+
+	if (s1 == NULL)
+		s1 = "";
+
+	if (s2 == NULL)
+		s2 = "";
 
 	size1 = _strlen(s1);
 	size2 = _strlen(s2);
 
-	new = malloc(sizeof(char) * (size1 + size2 + 1));
+	new = malloc(sizeof(*s1) * (size1 + size2 + 1));
 
 	if (new == NULL)
 		return (NULL);
-
-	if (*s1 == '\0' && *s2 == '\0')
-		return (new);
 
 	idx1 = 0;
 	while (idx1 < size1)
@@ -48,6 +51,5 @@ char *str_concat(char *s1, char *s2)
 		idx1++;
 		idx2++;
 	}
-
 	return (new);
 }
