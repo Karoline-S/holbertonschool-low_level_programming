@@ -24,15 +24,14 @@ char *_strdup(char *str)
 	unsigned int idx;
 
 	if (str == NULL)
-		return (0);
-
+		return (NULL);
 
 	size = _strlen(str) + 1;
 
 	s = malloc(sizeof(char) * size);
 
 	if (s == NULL)
-		return (0);
+		return (NULL);
 
 	idx = 0;
 	while (idx < size)
