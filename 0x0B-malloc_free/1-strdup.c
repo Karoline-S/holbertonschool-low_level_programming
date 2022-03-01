@@ -20,22 +20,26 @@ int _strlen(char *s)
 char *_strdup(char *str)
 {
 	char *s;
-	unsigned int size = _strlen(str);
+	unsigned int size;
+	unsigned int idx;
 
-	if (*str == '\0')
+	if (str == NULL)
 		return (0);
+
+
+	size = _strlen(str) + 1;
 
 	s = malloc(sizeof(char) * size);
 
-	if (s == 0)
+	if (s == NULL)
 		return (0);
 
-	while (*str != '\0')
+	idx = 0;
+	while (idx < size)
 	{
-		*s = *str;
-		s++;
-		str++;
+		s[idx] = str[idx];
+		idx++;
 	}
 
-	return (s - size);
+	return (s);
 }
