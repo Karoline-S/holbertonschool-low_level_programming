@@ -60,7 +60,6 @@ char *argstostr(int ac, char **av)
 	{
 		length = length + _strlen(av[idx]);
 		idx++;
-		printf("length = %d\n", length);
 	}
 	length = length + ac + 1;
 	args = malloc(sizeof(char) * length);
