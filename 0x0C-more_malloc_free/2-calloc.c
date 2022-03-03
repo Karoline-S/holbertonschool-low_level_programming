@@ -20,9 +20,9 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 
 	hold = a;
-	while (count < nmemb)
+	while (count < nmemb * size)
 	{
-		*hold = 0;
+		*hold ='\0';
 		hold++;
 		count++;
 	}
