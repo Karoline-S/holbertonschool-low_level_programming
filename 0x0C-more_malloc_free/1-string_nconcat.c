@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 
 /**
  * _strlen - gets the length of a string not including the null byte
@@ -26,7 +25,6 @@ void *malloc_checked(unsigned int b)
 	a = malloc(sizeof(b));
 	if (a == NULL)
 		return(NULL);
-	printf("malloc was successful I think");
 	return (a);
 }
 
@@ -40,8 +38,6 @@ char *_strcpy(char *dest, char *src)
 {
 	unsigned int i;
 
-	printf("in _strcpy, string src is:\"%s\"\n", src);
-	printf("in _strcpy, string dest is:\"%s\"\n", dest);
 	if (*src == '\0')
 		return (dest);
 	i = 0;
@@ -50,7 +46,6 @@ char *_strcpy(char *dest, char *src)
 		dest[i] = src[i];
 		i++;
 	}
-	printf("after _strcpy, string dest is:\"%s\"\n", dest);
 	return (dest);
 }
 
@@ -64,8 +59,6 @@ char *_strcpy(char *dest, char *src)
 char *_strncat(char *dest, char *src, unsigned int n)
 {
 	int destlen = _strlen(dest), i;
-	printf("in _strncat, string src is:\"%s\"\n", src);
-	printf("in _strncat, string dest is:\"%s\"\n", dest);
 
 	i = 0;
 	while (*src != '\0' && n > 0)
@@ -76,7 +69,6 @@ char *_strncat(char *dest, char *src, unsigned int n)
 		n--;
 	}
 	dest[destlen] = '\0';
-	printf("after _strncat, string dest is: \"%s\"\n", dest);
 	return (dest);
 }
 
@@ -93,14 +85,15 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int length;
 
 	length = _strlen(s1);
-	printf("length = %d\n", length);
+
 	newStr = malloc_checked(sizeof(*s1) * (length + n + 1));
+
 	if (newStr == NULL)
 		return (NULL);
-	printf("malloc has returned newStr as %p\n", newStr);
+
 	newStr = _strcpy(newStr, s1);
-	printf("newStr after _strcpy is \"%s\"\n", newStr);
+
 	newStr = _strncat(newStr, s2, n);
-	printf("newStr after _strncat is \"%s\"\n", newStr);
+
 	return (newStr);
 }
