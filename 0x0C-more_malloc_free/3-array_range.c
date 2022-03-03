@@ -1,4 +1,5 @@
 #include <stdlib.h>
+
 /**
  * array_range - create an ordered array of integers from min to max
  * @min: lowest int
@@ -9,6 +10,9 @@ int *array_range(int min, int max)
 {
 	int *arr, length, i;
 
+	if (min > max || (min == 0 && max == 0))
+		return (NULL);
+
 	length = max - (min - 1);
 
 	arr = malloc(sizeof(*arr) * length);
@@ -18,6 +22,7 @@ int *array_range(int min, int max)
 	i = 0;
 	arr[i] = min;
 	i++;
+	min++;
 	while (i < length)
 	{
 		arr[i] = min;
