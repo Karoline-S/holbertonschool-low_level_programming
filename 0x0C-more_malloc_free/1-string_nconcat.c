@@ -81,7 +81,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	length2 = _strlen(s2);
 
-	if (length2 < n)
+	if (n >= length2)
 		n = length2;
 
 	newStr = malloc(sizeof(*s1) * (length1 + n + 1));
