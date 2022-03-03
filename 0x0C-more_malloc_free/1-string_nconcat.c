@@ -1,5 +1,5 @@
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
  * _strlen - gets the length of a string not including the null byte
  * @s: pointer to the string
@@ -11,22 +11,6 @@ int _strlen(char *s)
 		return (0);
 
 	return (1 + _strlen(s + 1));
-}
-
-/**
- * malloc_checked - creates memory space with malloc, checks malloc return
- * @b: exit value to be returned
- * Return: pointer to new memory space or exit value
- */
-void *malloc_checked(unsigned int b)
-{
-	void *a;
-
-	a = malloc(b);
-	if (a == NULL)
-		return (NULL);
-
-	return (a);
 }
 
 /**
@@ -59,10 +43,12 @@ char *_strcpy(char *dest, char *src)
  */
 char *_strncat(char *dest, char *src, unsigned int n)
 {
-	int destlen = _strlen(dest), i;
+	int destlen, i;
+
+	destlen = _strlen(dest);
 
 	i = 0;
-	while (*src != '\0' && n > 0)
+	while (src[i] != '\0' && n > 0)
 	{
 		dest[destlen] = src[i];
 		destlen++;
@@ -97,7 +83,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (length2 < n)
 		n = length2;
 
-	newStr = malloc_checked(sizeof(*s1) * (length1 + n + 1));
+	newStr = malloc(sizeof(*s1) * (length1 + n + 1));
 
 	if (newStr == NULL)
 		return (NULL);
