@@ -25,7 +25,7 @@ void *malloc_checked(unsigned int b)
 
 	a = malloc(sizeof(b));
 	if (a == NULL)
-		exit(98);
+		return(NULL);
 	printf("malloc was successful I think");
 	return (a);
 }
@@ -95,7 +95,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	length = _strlen(s1);
 	printf("length = %d\n", length);
 	newStr = malloc_checked(sizeof(*s1) * (length + n + 1));
-/*	newStr = malloc(sizeof(*newStr) * (length + n + 1));*/
+	if (newStr == NULL)
+		return (NULL);
 	printf("malloc has returned newStr as %p\n", newStr);
 	newStr = _strcpy(newStr, s1);
 	printf("newStr after _strcpy is \"%s\"\n", newStr);
