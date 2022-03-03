@@ -83,16 +83,21 @@ char *_strncat(char *dest, char *src, unsigned int n)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *newStr;
-	unsigned int length;
+	unsigned int length1, length2;
 
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
 		s2 = "";
 
-	length = _strlen(s1);
+	length1 = _strlen(s1);
 
-	newStr = malloc_checked(sizeof(*s1) * (length + n + 1));
+	length2 = _strlen(s2);
+
+	if (length2 < n)
+		n = length2;
+
+	newStr = malloc_checked(sizeof(*s1) * (length1 + n + 1));
 
 	if (newStr == NULL)
 		return (NULL);
