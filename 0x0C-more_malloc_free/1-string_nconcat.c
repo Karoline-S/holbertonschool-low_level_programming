@@ -31,6 +31,7 @@ char *_strcpy(char *dest, char *src)
 		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -43,7 +44,7 @@ char *_strcpy(char *dest, char *src)
  */
 char *_strncat(char *dest, char *src, unsigned int n)
 {
-	int destlen, i;
+	unsigned int destlen, i;
 
 	destlen = _strlen(dest);
 
