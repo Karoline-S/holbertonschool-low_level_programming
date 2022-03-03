@@ -24,7 +24,7 @@ void *malloc_checked(unsigned int b)
 
 	a = malloc(sizeof(b));
 	if (a == NULL)
-		return(NULL);
+		return (NULL);
 	return (a);
 }
 
@@ -83,6 +83,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *newStr;
 	unsigned int length;
+
+
+	if (s1 == NULL)
+		s1 = "";
+
+	if (s2 == NULL)
+		s2 = "";
 
 	length = _strlen(s1);
 
