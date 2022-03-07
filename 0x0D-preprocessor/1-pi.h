@@ -1,6 +1,4 @@
-#ifndef _OBJECT_LIKE_MACRO_H_
-#define _OBJECT_LIKE_MACRO_H_
+#ifndef PI
+#define PI 3.14159265359
 
-#define PI 3.14159265359;
-
-#endif /* _OBJECT_LIKE_MACRO_H_ */
+#endif /* PI */
