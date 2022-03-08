@@ -5,6 +5,8 @@
  * @array: the array to be searched
  * @size: the size of the array
  * @cmp: ptr to the function to be used
+ * Return: index position that an int is found in array, or -1 if
+ * not found, or -1 if size is less than or equal to 0
  */
 int int_index(int *array, int size, int (*cmp)(int))
 {
