@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
 		exit(100);
 	}
 
-
 	f = get_op_func(argv[2]);
 
 	if (f == NULL)
