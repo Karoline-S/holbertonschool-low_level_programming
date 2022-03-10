@@ -9,30 +9,37 @@
  */
 void print_strings(const char *separator, const unsigned int n, ...)
 {
-	va_list ap1;
-	va_list ap2;
+	va_list ap;
 	unsigned int i;
 
 	va_start(ap, n);
-	va_copy(ap2, ap1);
 
 	i = 0;
 
 	while (i < n)
 	{
-		if (va_arg(ap1 == NULL))
-			printf("nil");
+		if (va_arg(ap, char *) == NULL)
+		{
+			printf("nil\n");
+			return:
+		}
+		i++;
+	}
+	va_end(ap);
+
+	va_start(ap, n);
+	i = 0;
+	while (i < n)
+	{
 
 		if (i != 0 && separator != NULL)
-			printf("%s%s", separator, va_arg(ap2, char *));
+			printf("%s%s", separator, va_arg(ap, char *));
 
 		else
-			printf("%s", va_arg(ap2, char *));
+			printf("%s", va_arg(ap, char *));
 
 		i++;
 	}
 	printf("\n");
-
-	va_end(ap1);
-	va_end(ap2);
+	va_end(ap);
 }
