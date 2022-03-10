@@ -11,39 +11,36 @@ void print_all(const char * const format, ...)
 	int idx = 0;
 	char *string, *separator = "";
 
-	if (format == NULL)
-		return;
-	va_start(ap, format);
-	while (format[idx] != '\0')
+	if (format != NULL)
 	{
-		switch (format[idx])
+		va_start(ap, format);
+		while (format[idx] != '\0')
 		{
-		case 'c':
-			printf("%s%c", separator, va_arg(ap, int));
-			separator = ", ";
-			break;
-		case 'i':
-			printf("%s%d", separator, va_arg(ap, int));
-			separator = ", ";
-			break;
-		case 'f':
-			printf("%s%f", separator, va_arg(ap, double));
-			separator = ", ";
-			break;
-		case 's':
-			string = va_arg(ap, char *);
-			if (string != NULL)
+			switch (format[idx])
 			{
+			case 'c':
+				printf("%s%c", separator, va_arg(ap, int));
+				separator = ", ";
+				break;
+			case 'i':
+				printf("%s%d", separator, va_arg(ap, int));
+				separator = ", ";
+				break;
+			case 'f':
+				printf("%s%f", separator, va_arg(ap, double));
+				separator = ", ";
+				break;
+			case 's':
+				string = va_arg(ap, char *);
+				if (string == NULL || *string == '\0')
+					string = "(nil)";
 				printf("%s%s", separator, string);
 				separator = ", ";
 				break;
 			}
-			printf("%snil", separator);
-			separator = ", ";
-			break;
+			idx++;
 		}
-		idx++;
+		va_end(ap);
 	}
-	va_end(ap);
 	printf("\n");
 }
