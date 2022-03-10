@@ -9,7 +9,7 @@ void print_all(const char * const format, ...)
 {
 	va_list ap;
 	int idx;
-	char *s;
+	char *string;
 	char *separator = "";
 
 	if (format == NULL)
@@ -34,11 +34,14 @@ void print_all(const char * const format, ...)
 			separator = ", ";
 			break;
 		case 's':
-			s = va_arg(ap, char *);
-			if (s != NULL)
-				printf("%s%s", separator, s);
-			else
-				printf("%snil", separator);
+			string = va_arg(ap, char *);
+			if (string != NULL)
+			{
+				printf("%s%s", separator, string);
+				separator = ", ";
+				break;
+			}
+			printf("%snil", separator);
 			separator = ", ";
 			break;
 		}
