@@ -1,18 +1,6 @@
 #include "variadic_functions.h"
 
 /**
- * _strlen - finds the length of a string
- * @s: the string to be examined
- * Return: the number of chars in the string as an int)
- */
-int _strlen(const char * const s)
-{
-	if (*s == '\0')
-		return (0);
-	return (1 + _strlen(s + 1));
-}
-
-/**
  * print_all - prints anything supplied as an argument to the program
  * @format: a list of types of arguments passed to the function
  * Return: nothing
