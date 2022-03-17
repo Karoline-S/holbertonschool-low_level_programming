@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+1;95;0c#include <stdlib.h>
 #include <string.h>
 #include "lists.h"
 
@@ -25,18 +25,20 @@ int _strlen(char *s)
 list_t *add_node(list_t **head, const char *str)
 {
 	list_t *new;
+	char *copy;
 
-/*	if (head == NULL)
-	return (NULL); */
+	if (head == NULL)
+		return (NULL);
 
 	new = malloc(sizeof(list_t));
 	if (new == NULL)
 		return (NULL);
 
-	new->str = strdup(str);
-	if (new->str == NULL)
+	copy = strdup(str);
+	if (copy == NULL)
 		return (NULL);
 
+	new->str = copy;
 	new->len = _strlen(new->str);
 
 	if (*head == NULL)
