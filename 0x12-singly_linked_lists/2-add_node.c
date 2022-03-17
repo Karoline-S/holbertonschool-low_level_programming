@@ -4,6 +4,18 @@
 #include "lists.h"
 
 /**
+ * _strlen - finds the length of a string
+ * @s: the string to be examined
+ * Return: the number of chars in the string as an int)
+ */
+int _strlen(char *s)
+{
+	if (*s == '\0')
+		return (0);
+	return (1 + _strlen(s + 1));
+}
+
+/**
  * add_node - adds a node to the front a list
  * @head: pointer to pointer for start of list
  * @str: pointer to string for inclusion
@@ -14,7 +26,7 @@ list_t *add_node(list_t **head, const char *str)
 {
 	list_t *new;
 
-	if (head == NULL || str == NULL)
+	if (head == NULL)
 		return (NULL);
 
 	new = malloc(sizeof(list_t));
@@ -22,11 +34,16 @@ list_t *add_node(list_t **head, const char *str)
 		return (NULL);
 
 	new->str = strdup(str);
+	if (new->str == NULL)
+		return (NULL);
 
-/*	if (*head == NULL)
+	new->len = _strlen(new->str);
+
+	if (*head == NULL)
 		new->next = NULL;
-		else */
-	new->next = *head;
+	else
+		new->next = *head;
+
 	*head = new;
 
 	return (new);
