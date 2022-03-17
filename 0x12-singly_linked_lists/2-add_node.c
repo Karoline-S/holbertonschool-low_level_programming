@@ -25,7 +25,6 @@ int _strlen(char *s)
 list_t *add_node(list_t **head, const char *str)
 {
 	list_t *new;
-	char *copy;
 
 	if (head == NULL)
 		return (NULL);
@@ -34,17 +33,12 @@ list_t *add_node(list_t **head, const char *str)
 	if (new == NULL)
 		return (NULL);
 
-	copy = strdup(str);
-	if (copy == NULL)
+	new->str = strdup(str);
+	if (new->str == NULL)
 		return (NULL);
 
-	new->str = copy;
 	new->len = _strlen(new->str);
-
-	if (*head == NULL)
-		new->next = NULL;
-	else
-		new->next = *head;
+	new->next = *head;
 
 	*head = new;
 
