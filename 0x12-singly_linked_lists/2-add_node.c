@@ -10,7 +10,7 @@
  */
 int _strlen(char *s)
 {
-	if (*s == '\0')
+	if (*s == '\0' || s == NULL)
 		return (0);
 	return (1 + _strlen(s + 1));
 }
@@ -26,18 +26,25 @@ list_t *add_node(list_t **head, const char *str)
 {
 	list_t *new;
 
-	if (head == NULL || str == NULL)
+	if (head == NULL)
 		return (NULL);
 
 	new = malloc(sizeof(list_t));
 	if (new == NULL)
 		return (NULL);
 
-	new->str = strdup(str);
-	if (new->str == NULL)
+	if (str == NULL)
 	{
-		free(new);
-		return (NULL);
+		new->str = NULL;
+	}
+	else
+	{
+		new->str = strdup(str);
+		if (new->str == NULL)
+		{
+			free(new);
+			return (NULL);
+		}
 	}
 
 	new->len = _strlen(new->str);
