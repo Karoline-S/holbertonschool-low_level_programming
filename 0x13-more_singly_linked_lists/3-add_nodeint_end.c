@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "lists.h"
 
@@ -15,7 +14,7 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 	if (head == NULL)
 		return (NULL);
 
-	new = malloc(sizeof(new));
+	new = malloc(sizeof(*new));
 
 	if (new == NULL)
 		return (NULL);
