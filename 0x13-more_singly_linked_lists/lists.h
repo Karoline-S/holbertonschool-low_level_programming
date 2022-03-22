@@ -14,6 +14,19 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+/**
+ * struct ptrhold_s - a list of pointers from another linked list
+ * @hold: a pointer to a listint_t node
+ * @next: a pointer to the next node in the ptrhold linked list
+ *
+ * Description: singly linked list node structure
+ */
+typedef struct ptrhold_s
+{
+	listint_t *hold;
+	struct ptrhold_s *next;
+} ptrhold;
+
 size_t print_listint(const listint_t *h);
 size_t listint_len(const listint_t *h);
 listint_t *add_nodeint(listint_t **head, const int n);
