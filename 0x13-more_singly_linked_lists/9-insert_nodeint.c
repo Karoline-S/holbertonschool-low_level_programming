@@ -2,6 +2,21 @@
 #include "lists.h"
 
 /**
+ * listint_len - find the number of elements in a linked list
+ * @h: pointer to the head of the list
+ * Return: the number of elements
+ */
+size_t listint_len(const listint_t *h)
+{
+	if (h == NULL)
+		return (0);
+
+	h = h->next;
+
+	return (1 + listint_len(h));
+}
+
+/**
  * get_nodeint_at_index - finds the address of the nth node
  * @head: pointer to the start
  * @index: index for the node to be returned (beginning at 0)
@@ -60,11 +75,13 @@ listint_t *add_nodeint(listint_t **head, const int n)
  * insert_nodeint_at_index - insert new node at nth node point
  * @head: pointer to pointer to start of the list
  * @idx: index to node position for new node
+ * @n: the integer to be inserted in new node
  * Return: address to new node or NULL if failed
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	listint_t *insert, *new, *temp;
+	unsigned int listlen;
 
 	if (head == NULL)
 		return (NULL);
@@ -72,20 +89,23 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	if (idx == 0)
 	{
 		new = add_nodeint(head, n);
+		new->n = n;
 		return (new);
 	}
 
-	insert = get_nodeint_at_index(*head, idx);
+	listlen = listint_len(*head);
 
-	if (insert == NULL)
+	if (idx > listlen + 1)
 		return (NULL);
 
-	if (insert->next == NULL)
+	insert = get_nodeint_at_index(*head, idx);
+/*
+	if (insert->next == NULL && idx > listlen)
 	{
 		new = add_nodeint_end(head, n);
 		return (new);
 	}
-
+*/
 	new = malloc(sizeof(*new));
 	if (new == NULL)
 		return (NULL);
