@@ -3,7 +3,7 @@
 #include "lists.h"
 
 /**
- * free_ptrlist - frees a ptrhold list
+ * free_ptrlist2 - frees a ptrhold list
  * @head: a pointer to the start of the list
  * Return: nothing.
  */
@@ -23,7 +23,7 @@ void free_ptrlist2(ptrhold *head)
 }
 
 /**
- * add_node - adds a new node at the beginning of a list
+ * add_node2 - adds a new node at the beginning of a list
  * @head: a pointer to a pointer to the start of the list
  * @hold: the integer to be inserted in the new node
  * Return: address of the new element
@@ -51,7 +51,7 @@ ptrhold *add_node2(ptrhold **head, listint_t *hold)
 }
 
 /**
- * node_address_compare - checks for a match between the address
+ * node_address_compare2 - checks for a match between the address
  * held in ptrhold and the address passed as nextnode
  * @head: the start of the ptrhold list
  * @nextnode: the address to be checked for in ptrhold list
@@ -74,7 +74,7 @@ int node_address_compare2(ptrhold *head, listint_t *nextnode)
 /**
  * free_listint_safe - frees a list with or without a loop, identifies
  * number loop elements
- * @head: a pointer to a pointer to the start of the list
+ * @h: a pointer to a pointer to the start of the list
  * Return: size of the list that was free'd
  */
 size_t free_listint_safe(listint_t **h)
@@ -93,15 +93,11 @@ size_t free_listint_safe(listint_t **h)
 		return (1);
 	}
 
+	count = 0;
 	ptrListHead = NULL;
-	add_node2(&ptrListHead, *h);
-
-	listintTmp = (*h)->next;
-	count = 1;
 
 	while (*h != NULL)
 	{
-		ptrListHead = NULL;
 		add_node2(&ptrListHead, *h);
 		listintTmp = (*h)->next;
 		free(*h);
