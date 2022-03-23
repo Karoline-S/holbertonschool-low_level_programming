@@ -63,7 +63,6 @@ int node_address_compare2(ptrhold *head, listint_t *nextnode)
 	{
 		if (head->hold == (void *)nextnode)
 		{
-			printf("-> [%p] %d\n", (void *)nextnode, nextnode->n);
 			return (1);
 		}
 		head = head->next;
@@ -93,8 +92,12 @@ size_t free_listint_safe(listint_t **h)
 		return (1);
 	}
 
-	count = 0;
 	ptrListHead = NULL;
+	add_node2(&ptrListHead, *h);
+	listintTmp = (*h)->next;
+	free(*h);
+	*h = listintTmp;
+	count = 1;
 
 	while (*h != NULL)
 	{
