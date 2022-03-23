@@ -3,38 +3,13 @@
 #include "lists.h"
 
 /**
- * add_node - adds a new node at the beginning of a list
- * @head: a pointer to a pointer to the start of the list
- * @n: the integer to be inserted in the new node
- * Return: address of the new element
- */
-ptrhold *add_node(ptrhold **head, listint_t *hold)
-{
-	ptrhold *new;
-
-	if (head == NULL)
-		return (NULL);
-
-	new = malloc(sizeof(*new));
-
-	if (new == NULL)
-		return (NULL);
-
-	new->hold = hold;
-	new->next = *head;
-	*head = new;
-
-	return (*head);
-}
-
-/*
- * free_listint_s - frees a ptrhold list
+ * free_ptrlist - frees a ptrhold list
  * @head: a pointer to the start of the list
  * Return: nothing.
- *
-void free_list_s(ptrhold *head)
+ */
+void free_ptrlist(ptrhold *head)
 {
-	listint_t *temp;
+	ptrhold *temp;
 
 	if (head == NULL)
 		return;
@@ -46,7 +21,56 @@ void free_list_s(ptrhold *head)
 		head = temp;
 	}
 }
-*/
+
+/**
+ * add_node - adds a new node at the beginning of a list
+ * @head: a pointer to a pointer to the start of the list
+ * @hold: the integer to be inserted in the new node
+ * Return: address of the new element
+ */
+ptrhold *add_node(ptrhold **head, listint_t *hold)
+{
+	ptrhold *new;
+
+	if (head == NULL)
+		exit(98);
+
+	new = malloc(sizeof(*new));
+
+	if (new == NULL)
+	{
+		free_ptrlist(*head);
+		exit(98);
+	}
+
+	new->hold = hold;
+	new->next = *head;
+	*head = new;
+
+	return (*head);
+}
+
+/**
+ * node_address_compare - checks for a match between the address held in ptrhold
+ * and the address passed as nextnode
+ * @head: the start of the ptrhold list
+ * @nextnode: the address to be checked for in ptrhold list
+ * Return: 1 for a match, 0 for no match
+ */
+int node_address_compare(ptrhold *head, listint_t *nextnode)
+{
+	while (head != NULL)
+	{
+		if (head->hold == (void *)nextnode)
+		{
+			printf("-> [%p] %d\n", (void *)nextnode, nextnode->n);
+			return (1);
+		}
+		head = head->next;
+	}
+	return (0);
+}
+
 /**
  * print_listint_safe - prints a list with our without a loop, identifies loop
  * elements
@@ -55,43 +79,42 @@ void free_list_s(ptrhold *head)
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	ptrhold *newhead, *newheadCpy, *temp;
-	listint_t *temphead;
-	int count = 0;
+	ptrhold *ptrListHead;
+	listint_t *listintTmp;
+	int count, loop;
 
 	if (head == NULL)
-		return (0);;
-
-	temphead = (listint_t *)head;
-	newhead = NULL;
-	add_node(&newhead, temphead);
-	if (newhead == NULL)
 		return (0);
-	temp = newhead;
-	newheadCpy = newhead;
-	while (temphead != NULL)
+
+	if (head->next == head)
 	{
-		printf("[%p] %d\n", (void *)temphead, temphead->n);
-		newhead->next = malloc(sizeof(*newhead));
-		if (newhead->next == NULL)
-			return (0);
-		newhead = newhead->next;
-		newhead->hold = temphead->next;
-		newhead->next = NULL;
-		count++;
-		newheadCpy = temp;
-		while (newheadCpy->next != NULL && temphead != NULL)
-		{
-			if (temphead->next == (void *)newheadCpy->hold)
-			{
-				printf("-> [%p] ", (void *)temphead->next);
-				temphead = temphead->next;
-				printf("%d\n", temphead->n);
-				return (count);
-			}
-			newheadCpy = newheadCpy->next;
-		}
-		temphead = temphead->next;
+		printf("[%p] %d\n", (void *)head, head->n);
+		printf("-> [%p] %d\n", (void *)head, head->n);
+		return (1);
 	}
+
+	ptrListHead = NULL;
+	add_node(&ptrListHead, (listint_t *)head);
+
+	if (ptrListHead == NULL)
+		return (0);
+
+	printf("[%p] %d\n", (void *)head, head->n);
+	listintTmp = head->next;
+	count = 1;
+
+	while (listintTmp != NULL)
+	{
+		printf("[%p] %d\n", (void *)listintTmp, listintTmp->n);
+		add_node(&ptrListHead, listintTmp);
+		count++;
+		loop = node_address_compare(ptrListHead, listintTmp->next);
+
+		if (loop == 1)
+			return (count);
+
+		listintTmp = listintTmp->next;
+	}
+
 	return (count);
 }
