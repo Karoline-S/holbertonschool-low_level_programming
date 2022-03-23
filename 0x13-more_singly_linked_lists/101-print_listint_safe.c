@@ -110,11 +110,11 @@ size_t print_listint_safe(const listint_t *head)
 		loop = node_address_compare(ptrListHead, listintTmp->next);
 		if (loop == 1)
 		{
-			free_list(ptrListHead);
+			free_ptrlist(ptrListHead);
 			return (count);
 		}
 		listintTmp = listintTmp->next;
 	}
-	free_list(ptrListHead);
+	free_ptrlist(ptrListHead);
 	return (count);
 }
