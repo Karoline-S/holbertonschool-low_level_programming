@@ -51,8 +51,8 @@ ptrhold *add_node(ptrhold **head, listint_t *hold)
 }
 
 /**
- * node_address_compare - checks for a match between the address held in ptrhold
- * and the address passed as nextnode
+ * node_address_compare - checks for a match between the address
+ * held in ptrhold and the address passed as nextnode
  * @head: the start of the ptrhold list
  * @nextnode: the address to be checked for in ptrhold list
  * Return: 1 for a match, 0 for no match
@@ -95,7 +95,6 @@ size_t print_listint_safe(const listint_t *head)
 
 	ptrListHead = NULL;
 	add_node(&ptrListHead, (listint_t *)head);
-
 	if (ptrListHead == NULL)
 		return (0);
 
@@ -109,12 +108,13 @@ size_t print_listint_safe(const listint_t *head)
 		add_node(&ptrListHead, listintTmp);
 		count++;
 		loop = node_address_compare(ptrListHead, listintTmp->next);
-
 		if (loop == 1)
+		{
+			free_list(ptrListHead);
 			return (count);
-
+		}
 		listintTmp = listintTmp->next;
 	}
-
+	free_list(ptrListHead);
 	return (count);
 }
