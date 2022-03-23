@@ -33,14 +33,14 @@ ptrhold *add_node2(ptrhold **head, listint_t *hold)
 	ptrhold *new;
 
 	if (head == NULL)
-		exit(98);
+		return (NULL);
 
 	new = malloc(sizeof(*new));
 
 	if (new == NULL)
 	{
 		free_ptrlist2(*head);
-		exit(98);
+		return (NULL);
 	}
 
 	new->hold = hold;
@@ -84,24 +84,25 @@ size_t free_listint_safe(listint_t **h)
 
 	if (h == NULL)
 		return (0);
-
 	if ((*h)->next == *h)
 	{
 		free(*h);
 		*h = NULL;
 		return (1);
 	}
-
 	ptrListHead = NULL;
 	add_node2(&ptrListHead, *h);
+	if (ptrListHead == NULL)
+		return (0);
 	listintTmp = (*h)->next;
 	free(*h);
 	*h = listintTmp;
 	count = 1;
-
 	while (*h != NULL)
 	{
 		add_node2(&ptrListHead, *h);
+		if (ptrListHead == NULL)
+			return (count);
 		listintTmp = (*h)->next;
 		free(*h);
 		count++;
