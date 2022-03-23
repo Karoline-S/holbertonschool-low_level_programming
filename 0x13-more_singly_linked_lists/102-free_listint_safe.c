@@ -84,29 +84,23 @@ size_t free_listint_safe(listint_t **h)
 
 	if (h == NULL)
 		return (0);
-	if ((*h)->next == *h)
-	{
-		free(*h);
-		*h = NULL;
-		return (1);
-	}
+
 	ptrListHead = NULL;
-	add_node2(&ptrListHead, *h);
-	if (ptrListHead == NULL)
-		return (0);
-	listintTmp = (*h)->next;
-	free(*h);
-	*h = listintTmp;
-	count = 1;
+	count = 0;
+
 	while (*h != NULL)
 	{
 		add_node2(&ptrListHead, *h);
+
 		if (ptrListHead == NULL)
 			return (count);
+
 		listintTmp = (*h)->next;
 		free(*h);
 		count++;
+
 		loop = node_address_compare2(ptrListHead, listintTmp);
+
 		if (loop == 1)
 		{
 			free_ptrlist2(ptrListHead);
@@ -116,5 +110,6 @@ size_t free_listint_safe(listint_t **h)
 		*h = listintTmp;
 	}
 	free_ptrlist2(ptrListHead);
+
 	return (count);
 }
