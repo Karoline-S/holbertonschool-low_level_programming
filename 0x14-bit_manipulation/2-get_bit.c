@@ -9,30 +9,12 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int bit, idx, findStart;
+	unsigned int bit;
 
-	if (index > 32)
+	if (index > 31)
 		return (-1);
 
-	if (index == 0)
-		return (n & 1);
+	bit = (n >> index) & 1;
 
-	idx = 31;
-	findStart = 0;
-	bit = 0;
-
-	while (idx > 0 && findStart == 0)
-	{
-		bit = (n >> idx) & 1;
-		if (bit == 1)
-			findStart = 1;
-		else
-			idx--;
-	}
-
-	if (index > idx)
-		return (-1);
-
-	bit = (n >> (index)) & 1;
 	return (bit);
 }
