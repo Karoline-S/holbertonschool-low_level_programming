@@ -8,24 +8,6 @@
 #include "main.h"
 
 /**
- * buff_len - counts the characters of the buffer string
- * @b: pointer to the string
- * Return: number of chars or 0 if NULL pointer passed
- */
-size_t buff_len(char *b)
-{
-	if (b == NULL)
-		return (0);
-
-	if (*b == '\0')
-		return (0);
-
-	b++;
-
-	return (1 + buff_len(b));
-}
-
-/**
  * read_textfile - reads a text file to stdout
  * @filename: a pointer to a string containing the file name
  * @letters: the number of letters to be read and printed
@@ -34,7 +16,7 @@ size_t buff_len(char *b)
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd;
-	ssize_t len, written;
+	ssize_t written, read_size;
 	char *buff;
 
 	if (filename == NULL || letters == 0)
@@ -53,17 +35,20 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	read(fd, buff, letters);
+	read_size = read(fd, buff, letters);
 	close(fd);
 
-	buff[letters + 1] = '\0';
-	len = buff_len(buff);
+	buff[letters] = '\0';
 
-	written = write(1, buff, len);
+	written = write(1, buff, read_size);
 	free(buff);
 
-	if (written == -1)
+	if (written == -1 || written < read_size)
+	{
+		free(buff);
+		close(fd);
 		return (0);
+	}
 
-	return (len);
+	return (written);
 }
