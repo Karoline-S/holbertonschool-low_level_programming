@@ -2,6 +2,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -51,15 +52,16 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	read(fd, buff, letters);
-	close(fd);
 
 	buff[letters + 1] = '\0';
 	len = buff_len(buff);
+	printf("letters = %ld\nlen = %ld\n", letters, len);
 
-	written = write(1, buff, letters);
+        written = write(1, buff, letters);
+	printf("written after write = %ld\n", written);
 
-	if (written == -1 || written < len)
-		return (0);
+	free(buff);
+	close(fd);
 
 	return (len);
 }
