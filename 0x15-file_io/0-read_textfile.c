@@ -34,7 +34,7 @@ size_t buff_len(char *b)
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd;
-	ssize_t len;
+	ssize_t len, written;
 	char *buff;
 
 	if (filename == NULL || letters == 0)
@@ -51,13 +51,15 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	read(fd, buff, letters);
-	buff[letters + 1] = '\0';
+	close(fd);
 
+	buff[letters + 1] = '\0';
 	len = buff_len(buff);
 
-	len = write(1, buff, len);
+	written = write(1, buff, letters);
 
-	close(fd);
+	if (written == -1 || written < len)
+		return (0);
 
 	return (len);
 }
