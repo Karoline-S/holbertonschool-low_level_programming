@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
 
 #define PERMISSIONS (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH)
 
@@ -60,6 +59,7 @@ void error_exits(int err, int *fd1, int *fd2, char *fname)
  * @fd1: a pointer to the from file descriptor
  * @fd2: a pointer to the to file descriptor
  * @size: the maximum number of bytes to be read
+ * @chunk: a pointer to a malloc'd empty string
  * @str: a pointer to the string with filename in case of error call
  * Return: a pointer to the string containing the read bytes
  */
@@ -135,6 +135,10 @@ int main(int argc, char *argv[])
 	while (write_s == 1024)
 	{
 		chunk = malloc(sizeof(*chunk) * 1024);
+
+		if (chunk == NULL)
+			error_exits(98, &fd_from, &fd_to, argv[1]);
+
 		read_s = read_chunk(&fd_from, &fd_to, 1024, chunk, argv[1]);
 		write_s = write_chunk(&fd_from, &fd_to, read_s, chunk, argv[2]);
 		free(chunk);
