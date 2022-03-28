@@ -44,7 +44,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	close(fd);
 	buff[letters] = '\0';
-	written = write(1, buff, read_size);
+	written = write(STDOUT_FILENO, buff, read_size);
 	free(buff);
 
 	if (written == -1 || written < read_size)
