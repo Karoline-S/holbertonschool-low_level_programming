@@ -10,4 +10,4 @@
 
 **Advanced Task**
 
-4. Write a function that sets teh value of a bit to 0 at a given index.
+4. Write a program that displays the information contained in the ELF header at the start of an ELF file.
