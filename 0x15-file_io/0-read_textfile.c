@@ -35,11 +35,14 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 
 	read_size = read(fd, buff, letters);
-	if (read_size < 0)
+	if (read_size == -1)
 	{
 		close(fd);
 		free(buff);
+		return (0)
 	}
+
+	close(fd);
 
 	buff[letters] = '\0';
 
