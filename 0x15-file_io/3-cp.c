@@ -32,6 +32,18 @@ void error_exits(int err, int *fd1, int *fd2, char *fname)
 {
 	int close_status;
 
+	if (err == 988)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file ");
+		dprintf(STDERR_FILENO, "%s\n", fname);
+		exit(98);
+	}
+
+	if (err == 999)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", fname);
+		exit(99);
+	}
 	if (err == 98)
 	{
 		close_status = close(*fd1);
@@ -118,7 +130,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		write(STDERR_FILENO, "Usage: cp file_from file_to\n", 29);
+		write(STDERR_FILENO, "Usage: cp file_from file_to", 29);
 		exit(97);
 	}
 
@@ -126,10 +138,10 @@ int main(int argc, char *argv[])
 	fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, PERMISSIONS);
 
 	if (fd_from == -1)
-		error_exits(98, &fd_from, &fd_to, argv[1]);
+		error_exits(988, &fd_from, &fd_to, argv[1]);
 
 	if (fd_to == -1)
-		error_exits(99, &fd_from, &fd_to, argv[2]);
+		error_exits(999, &fd_from, &fd_to, argv[2]);
 
 	write_s = 1024;
 	while (write_s == 1024)
