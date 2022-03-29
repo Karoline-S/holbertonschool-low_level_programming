@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		write(STDERR_FILENO, "Usage: cp file_from file_to", 29);
+		write(STDERR_FILENO, "Usage: cp file_from file_to\n", 28);
 		exit(97);
 	}
 
