@@ -34,22 +34,22 @@ void error_exits(int err, int *fd1, int *fd2, char *fname)
 
 	if (err == 98)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file ");
-		dprintf(STDERR_FILENO, "%s\n", fname);
 		close_status = close(*fd1);
 		close_success_check(close_status, fd1);
 		close_status = close(*fd2);
 		close_success_check(close_status, fd2);
+		dprintf(STDERR_FILENO, "Error: Can't read from file ");
+		dprintf(STDERR_FILENO, "%s\n", fname);
 		exit(98);
 	}
 
 	if (err == 99)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", fname);
 		close_status = close(*fd1);
 		close_success_check(close_status, fd1);
 		close_status = close(*fd2);
 		close_success_check(close_status, fd2);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", fname);
 		exit(99);
 	}
 }
