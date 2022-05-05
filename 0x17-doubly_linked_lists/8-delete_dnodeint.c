@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "lists.h"
 
 /**
@@ -50,13 +49,11 @@ void free_first_node(dlistint_t **head)
  */
 void free_last_node(dlistint_t *head)
 {
-	printf("arrived in free last node\n");
 	while (head->next != NULL)
 		head = head->next;
 
 	head->prev->next = NULL;
 	free(head);
-	printf("leaving free last node\n");
 }
 
 /**
