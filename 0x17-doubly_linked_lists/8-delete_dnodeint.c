@@ -1,28 +1,26 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "lists.h"
 
 /**
- * index_check - checks to see if an index position if valid
- * @head: a pointer to the start of the list
- * @idx: the index position
- * Return: 0 if position exists mid-list, 1 if exists at end of list, 2 if
- * doesn't exist
+ * dlistint_len - count the number of nodes in a linked list
+ * @h: a pointer to the head of the list
+ * Return: number of elements in the list
  */
-int index_check(dlistint_t *head, int idx)
+size_t dlistint_len(const dlistint_t *h)
 {
-	while (idx > 0 && head != NULL)
+	int count = 0;
+
+	if (h == NULL)
+		return (0);
+
+	while (h != NULL)
 	{
-		head = head->next;
-		idx--;
+		count++;
+		h = h->next;
 	}
 
-	if (idx != 0)
-		return (2);
-
-	if (idx == 0 && head == NULL)
-		return (1);
-
-	return (0);
+	return (count);
 }
 
 /**
@@ -52,11 +50,13 @@ void free_first_node(dlistint_t **head)
  */
 void free_last_node(dlistint_t *head)
 {
+	printf("arrived in free last node\n");
 	while (head->next != NULL)
 		head = head->next;
 
 	head->prev->next = NULL;
 	free(head);
+	printf("leaving free last node\n");
 }
 
 /**
@@ -82,6 +82,7 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 
 	return (head);
 }
+
 /**
  * delete_dnodeint_at_index - delete node at index provided
  * @head: a pointer to pointer to start of list
@@ -91,7 +92,7 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	dlistint_t *hold;
-	int idx_check;
+	unsigned int listLength;
 
 	if (head == NULL || *head == NULL)
 		return (-1);
@@ -102,12 +103,12 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		return (1);
 	}
 
-	idx_check = index_check(*head, index);
+	listLength = dlistint_len(*head);
 
-	if (idx_check == 2)
+	if (index == listLength || index > listLength)
 		return (-1);
 
-	if (idx_check == 1)
+	if (index == listLength - 1)
 	{
 		free_last_node(*head);
 		return (1);
@@ -117,5 +118,6 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	hold->next->prev = hold->prev;
 	hold->prev->next = hold->next;
 	free(hold);
+
 	return (1);
 }
