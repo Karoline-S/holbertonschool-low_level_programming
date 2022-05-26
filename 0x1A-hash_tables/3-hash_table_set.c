@@ -43,7 +43,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 
-	position->key = (char *)key;
+	position->key = strdup(key);
 	position->value = strdup(value);
 
 	return (1);
