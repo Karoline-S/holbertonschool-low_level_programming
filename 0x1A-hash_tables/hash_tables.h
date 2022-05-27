@@ -44,6 +44,7 @@ void hash_table_delete(hash_table_t *ht);
 hash_node_t *add_node(hash_node_t **array, unsigned long int idx);
 void free_list(hash_node_t *head);
 void free_hash_table(hash_table_t *ht);
+void print_list(hash_node_t *list, int start);
 
 /* data structures and prototypes for advanced task */
 
