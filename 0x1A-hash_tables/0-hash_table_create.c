@@ -32,50 +32,6 @@ hash_table_t *hash_table_create(unsigned long int size)
 }
 
 /**
- * free_hash_table - free's a hashtable and associated linked lists
- * @ht: the hash_table to be free'd
- * Return: nothing
- */
-void free_hash_table(hash_table_t *ht)
-{
-	hash_node_t **array = NULL;
-	unsigned long int i;
-
-	if (ht == NULL || ht->array == NULL)
-		return;
-
-	array = ht->array;
-
-	for (i = 0; i < ht->size; i++)
-		if (array[i] != NULL)
-			free_list(array[i]);
-
-	free(array);
-	free(ht);
-}
-
-/**
- * free_list - frees a linked list of hash_node_t's
- * @head: the head of the list
- * Return: Nothing
- */
-void free_list(hash_node_t *head)
-{
-	hash_node_t *next;
-
-	if (head == NULL)
-		return;
-
-	while (head != NULL)
-	{
-		next = head->next;
-		free(head->value);
-		free(head);
-		head = next;
-	}
-}
-
-/**
  * add_node - adds a node to the start of a hash_node_t linked list
  * @array: an array of pointers to hash_node_t's
  * @idx: the index in array for the new node
