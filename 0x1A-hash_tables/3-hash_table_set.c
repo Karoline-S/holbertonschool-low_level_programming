@@ -38,10 +38,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	position = add_node(ht->array, idx);
 	if (position == NULL)
-	{
-		hash_table_delete(ht);
 		return (0);
-	}
 
 	position->key = strdup(key);
 	position->value = strdup(value);
